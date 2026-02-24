@@ -74,7 +74,8 @@ WSGI_APPLICATION = 'imigatus_project.wsgi.application'
 
 
 # Database
-# En local : SQLite (par défaut). En production : Supabase (PostgreSQL) via DATABASE_URL.
+# En local : SQLite (par défaut).
+# En production (optionnel) : base PostgreSQL externe via la variable d'environnement DATABASE_URL.
 if os.environ.get('DATABASE_URL'):
     import dj_database_url
     DATABASES = {

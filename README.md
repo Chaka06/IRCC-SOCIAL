@@ -118,7 +118,7 @@ Ton site sera accessible à : **https://TON_USERNAME.pythonanywhere.com**
 
 ## Production (autres hébergeurs)
 
-Variables utiles : `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`, `DJANGO_ALLOWED_HOSTS=ton-domaine.com`. Fichiers statiques : `python manage.py collectstatic`. Optionnel : base PostgreSQL via `DATABASE_URL` (Supabase).
+Variables utiles : `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`, `DJANGO_ALLOWED_HOSTS=ton-domaine.com`. Fichiers statiques : `python manage.py collectstatic`. Optionnel : base PostgreSQL via `DATABASE_URL` (hébergeur externe).
 
 ## Structure
 
