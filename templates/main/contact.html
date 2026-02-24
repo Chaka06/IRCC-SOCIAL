@@ -1,0 +1,180 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Contact - IRCC{% endblock %}
+{% block meta_description %}Contactez IMIGATUS pour votre immigration au Canada. Support WhatsApp, email et bureau à Toronto. Réponses rapides à vos questions.{% endblock %}
+{% block og_title %}Contact - IRCC | IMIGATUS{% endblock %}
+{% block og_description %}Contactez notre équipe : WhatsApp, email, bureau Toronto. Accompagnement immigration Canada.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="display-4 fw-bold mb-4">
+                    Contactez-Nous
+                </h1>
+                <p class="lead mb-4">
+                    Tremblay Olivia, Informaticienne au sein de notre entreprise (IRCC), avec 8 ans d'expérience 
+                    dans le domaine de l'immigration professionnelle. Nous restons à votre disposition pour vous accompagner.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-headset" style="font-size: 12rem; color: rgba(255,255,255,0.3);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="fas fa-envelope me-2"></i>Nous Contacter
+                        </h3>
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="contact-item text-center p-4 border rounded">
+                                    <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+                                    <h5>WhatsApp</h5>
+                                    <p class="text-muted">Support direct et rapide</p>
+                                    <a href="https://wa.me/{{ contact_whatsapp_clean }}" class="btn btn-success">
+                                            <i class="fab fa-whatsapp me-2"></i>Contacter WhatsApp
+                                        </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="contact-item text-center p-4 border rounded">
+                                    <i class="fas fa-phone fa-3x text-danger mb-3"></i>
+                                    <h5>Téléphone</h5>
+                                    <p class="text-muted">Appel direct</p>
+                                    <a href="tel:{{ contact_whatsapp_clean }}" class="btn btn-primary">
+                                        <i class="fas fa-phone me-2"></i>{{ contact_whatsapp }}
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="contact-item text-center p-4 border rounded">
+                                    <i class="fas fa-envelope fa-3x text-danger mb-3"></i>
+                                    <h5>Email</h5>
+                                    <p class="text-muted">Support par email</p>
+                                    <a href="mailto:{{ contact_email }}" class="btn btn-outline-primary">
+                                        <i class="fas fa-envelope me-2"></i>{{ contact_email }}
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="contact-item text-center p-4 border rounded">
+                                    <i class="fas fa-map-marker-alt fa-3x text-danger mb-3"></i>
+                                    <h5>Adresse du Bureau</h5>
+                                    <p class="text-muted">Notre bureau officiel</p>
+                                    <p class="small">
+                                        <strong>5343 Dundas St W<br/>
+                                        Toronto, ON M9B 6K5<br/>
+                                        Canada 🇨🇦</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-clock me-2"></i>Horaires d'Ouverture
+                        </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="schedule-item d-flex justify-content-between mb-3">
+                            <span>Lundi - Vendredi</span>
+                            <span class="fw-bold">9h00 - 18h00</span>
+                        </div>
+                        <div class="schedule-item d-flex justify-content-between mb-3">
+                            <span>Samedi</span>
+                            <span class="fw-bold">9h00 - 14h00</span>
+                        </div>
+                        <div class="schedule-item d-flex justify-content-between mb-3">
+                            <span>Dimanche</span>
+                            <span class="fw-bold">Fermé</span>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="text-center">
+                            <h6 class="text-success">Support WhatsApp 24/7</h6>
+                            <p class="text-muted small">Disponible à tout moment pour vos questions urgentes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow-lg border-0 mt-4">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-question-circle me-2"></i>Questions Fréquentes
+                        </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="faq-item mb-3">
+                            <h6 class="text-primary">Comment commencer ma candidature ?</h6>
+                            <p class="small text-muted">Remplissez notre formulaire en ligne et téléchargez votre document PDF.</p>
+                        </div>
+                        
+                        <div class="faq-item mb-3">
+                            <h6 class="text-primary">Vos services sont-ils gratuits ?</h6>
+                            <p class="small text-muted">La consultation initiale et le formulaire sont gratuits.</p>
+                        </div>
+                        
+                        <a href="{% url 'application_form' %}" class="btn btn-primary btn-sm w-100">
+                            <i class="fas fa-rocket me-2"></i>Commencer Maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="display-6 fw-bold text-dark mb-3">Besoin d'Aide Immédiate ?</h2>
+                        <p class="lead text-muted mb-4">
+                            Notre équipe d'experts est disponible pour répondre à toutes vos questions 
+                            et vous accompagner dans votre processus d'immigration.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <a href="https://wa.me/{{ contact_whatsapp_clean }}" class="btn btn-success btn-lg">
+                                <i class="fab fa-whatsapp me-2"></i>WhatsApp Direct
+                            </a>
+                            <a href="mailto:{{ contact_email }}" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-envelope me-2"></i>Email Direct
+                            </a>
+                            <a href="{% url 'application_form' %}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-file-alt me-2"></i>Commencer ma Candidature
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

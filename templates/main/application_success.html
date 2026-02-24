@@ -1,0 +1,243 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Candidature Soumise - IMIGATUS{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block meta_description %}Votre candidature d'immigration a été enregistrée. Téléchargez votre document et contactez notre équipe via WhatsApp.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="display-4 fw-bold mb-4">
+                    Candidature Soumise avec Succès !
+                </h1>
+                <p class="lead mb-4">
+                    Félicitations ! Votre candidature d'immigration a été enregistrée. 
+                    Vous pouvez maintenant télécharger votre document et contacter notre équipe.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-check-circle" style="font-size: 12rem; color: rgba(255,255,255,0.3);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Content Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Success Card -->
+                <div class="card border-success shadow-lg mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-check-circle me-2"></i>Candidature Enregistrée
+                        </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-2">Nom Complet</h6>
+                                <p class="fw-bold fs-5">{{ application.full_name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-2">ID de Candidature</h6>
+                                <p class="fw-bold fs-5">#{{ application.id }}</p>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-2">Date de Soumission</h6>
+                                <p class="fw-bold">{{ application.created_at|date:"d/m/Y à H:i" }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-2">Pays de Résidence</h6>
+                                <p class="fw-bold">{{ application.country_of_residence }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-success mt-4">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <strong>Confirmation :</strong> Votre candidature a été enregistrée avec succès dans notre système sécurisé.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="card shadow-lg">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="mb-4">Prochaines Étapes</h4>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="action-card p-4 border rounded">
+                                    <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
+                                    <h5>Télécharger le PDF</h5>
+                                    <p class="text-muted mb-3">
+                                        Téléchargez votre document de candidature professionnel au format PDF
+                                    </p>
+                                    <a href="{% url 'generate_pdf' application.id %}" class="btn btn-primary">
+                                        <i class="fas fa-download me-2"></i>Télécharger PDF
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="action-card p-4 border rounded">
+                                    <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+                                    <h5>Contact WhatsApp</h5>
+                                    <p class="text-muted mb-3">
+                                        Contactez notre équipe via WhatsApp pour la suite du processus
+                                    </p>
+                                    <a href="{% url 'whatsapp_redirect' application.id %}" class="btn btn-success">
+                                        <i class="fab fa-whatsapp me-2"></i>Contacter WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-info-circle me-2"></i>Instructions :</h6>
+                                <ol class="mb-0 text-start">
+                                    <li>Téléchargez d'abord votre document PDF de candidature</li>
+                                    <li>Contactez notre équipe via WhatsApp en mentionnant votre ID de candidature</li>
+                                    <li>Envoyez le document PDF via WhatsApp pour validation</li>
+                                    <li>Notre équipe vous guidera pour la suite du processus</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Information Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold text-dark mb-3">Que se passe-t-il maintenant ?</h2>
+                <p class="lead text-muted">Le processus d'immigration étape par étape</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h6>Candidature Soumise</h6>
+                    <p class="text-muted small">Votre formulaire a été enregistré avec succès</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">2</span>
+                    </div>
+                    <h6>Contact WhatsApp</h6>
+                    <p class="text-muted small">Notre équipe vous contacte pour validation</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">3</span>
+                    </div>
+                    <h6>Validation</h6>
+                    <p class="text-muted small">Vérification et validation de votre dossier</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">4</span>
+                    </div>
+                    <h6>Accompagnement</h6>
+                    <p class="text-muted small">Suivi personnalisé jusqu'au visa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="mb-4">Besoin d'Aide ?</h3>
+                        <p class="lead text-muted mb-4">
+                            Notre équipe est disponible pour vous accompagner à chaque étape de votre processus d'immigration.
+                        </p>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg w-100">
+                                    <i class="fas fa-envelope me-2"></i>Nous Contacter
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg w-100">
+                                    <i class="fas fa-home me-2"></i>Retour à l'Accueil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Animation d'apparition des cartes
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+    });
+    
+    // Confirmation avant téléchargement PDF
+    document.querySelector('a[href*="generate_pdf"]').addEventListener('click', function(e) {
+        if (!confirm('Voulez-vous télécharger votre document de candidature au format PDF ?')) {
+            e.preventDefault();
+        }
+    });
+    
+    // Confirmation avant contact WhatsApp
+    document.querySelector('a[href*="whatsapp_redirect"]').addEventListener('click', function(e) {
+        if (!confirm('Voulez-vous être redirigé vers WhatsApp pour contacter notre équipe ?')) {
+            e.preventDefault();
+        }
+    });
+</script>
+{% endblock %}
+

@@ -1,0 +1,335 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Procédure d'Immigration - IRCC{% endblock %}
+{% block meta_description %}Procédure d'immigration au Canada : étapes, documents, passeport temporaire, accompagnement IRCC. Découvrez notre processus Entrée Express et nos partenaires.{% endblock %}
+{% block og_title %}Procédure d'Immigration - IRCC | IMIGATUS{% endblock %}
+{% block og_description %}Procédure complète d'immigration au Canada. Accompagnement, documents officiels, passeport temporaire et intégration.{% endblock %}
+{% block twitter_title %}Procédure d'Immigration - IRCC | IMIGATUS{% endblock %}
+{% block twitter_description %}Procédure complète d'immigration au Canada. Accompagnement et documents officiels.{% endblock %}
+
+{% block extra_css %}
+<style>
+  .hero-img-wrapper {
+    padding-left: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  @media (min-width: 992px) {
+    .hero-img-wrapper {
+      margin-top: 0;
+    }
+  }
+  .hero-img-tilted {
+    max-height: 300px;
+    transform: rotate(-10deg);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-img-tilted:hover {
+    transform: rotate(-6deg) scale(1.02);
+    box-shadow: 12px 12px 28px rgba(0, 0, 0, 0.3);
+  }
+  @media (max-width: 768px) {
+    .hero-img-wrapper {
+      padding-left: 0;
+      margin-top: 2rem;
+    }
+    .hero-img-tilted {
+      max-height: 180px;
+      max-width: 85%;
+      margin: 0 auto;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 position-relative" style="z-index: 2;">
+                <h1 class="display-4 fw-bold mb-4">Procédure d'Immigration au Canada</h1>
+                <p class="lead mb-4">Découvrez notre processus complet et structuré pour votre immigration au Canada</p>
+                <div class="d-flex flex-nowrap gap-2">
+                    <a href="{% url 'application_form' %}" class="btn btn-light btn-lg">Commencer ma candidature</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">Nous contacter</a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center position-relative mt-4 mt-lg-0" style="z-index: 1;">
+                <div class="hero-img-wrapper d-flex justify-content-center">
+                    <img src="https://vi2vals-immigration.ca/wp-content/uploads/2021/08/immigration-procedure.jpg" alt="Procédure Immigration" class="img-fluid hero-img-tilted">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bannière publicitaire -->
+<div class="container mt-5">
+    <div class="ad-banner">
+        <img src="https://www.recruter.tn/wp-content/uploads/2020/07/canada.png" alt="Opportunité d'Emploi Canada" class="img-fluid">
+        <h4>Opportunité d'Emploi au Canada – Informations requises</h4>
+        <p>Merci de votre intérêt pour notre programme. Afin de constituer votre dossier et vous proposer les meilleures options, nous vous prions de bien vouloir nous transmettre les informations suivantes.</p>
+    </div>
+</div>
+
+<!-- Section Notre Agence -->
+<section class="py-5">
+    <div class="container">
+        <div class="procedure-section">
+            <h2 class="text-center mb-5">Agence de Soutien à l'Immigration Canadienne</h2>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="lead">Nous sommes une structure agréée spécialisée dans l'accompagnement personnalisé des candidats à l'immigration au Canada.</p>
+                    
+                    <div class="procedure-step">
+                        <h4>Notre Mission</h4>
+                        <p>Faciliter l'accès au territoire canadien grâce à un encadrement complet, fiable et conforme aux exigences de l'immigration.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Nos Partenaires</h4>
+                        <p>En collaboration avec le <strong>gouvernement canadien</strong>, le <strong>Fonds Monétaire International (FMI)</strong> et des <strong>organisations partenaires reconnues</strong>, nous mettons à votre disposition :</p>
+                        <ul>
+                            <li>Un appui administratif et logistique</li>
+                            <li>Un accompagnement dans l'obtention de vos documents officiels</li>
+                            <li>Une assistance jusqu'à votre intégration sur le territoire canadien</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <img src="{% load static %}{% static 'images/elena_wilson.png' %}" alt="ELENA WILSON">
+                        <h5>ELENA WILSON</h5>
+                        <div class="position">Informaticienne - IRCC</div>
+                        <div class="description">
+                            8 ans d'expérience dans le domaine de l'immigration professionnelle. 
+                            Spécialisée dans l'accompagnement des candidats à l'immigration.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Enregistrement Officiel -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="procedure-section">
+            <h2 class="text-center mb-5">Enregistrement Officiel</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="procedure-step">
+                        <h4>Certification Officielle</h4>
+                        <p><strong>Enregistrée officiellement</strong> auprès des autorités canadiennes (<strong>Reg. N° 535688</strong>) et du Consulat du Canada en France (<strong>N° 73784</strong>).</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Expertise Reconnue</h4>
+                        <p>Notre agence bénéficie de plus de <strong>12 ans d'expertise</strong> dans le domaine de l'immigration professionnelle et humanitaire.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="procedure-step">
+                        <h4>Nos Services Complets</h4>
+                        <ul>
+                            <li>Évaluation complète et confidentielle de votre profil</li>
+                            <li>Montage et dépôt de votre dossier auprès des autorités compétentes</li>
+                            <li>Suivi administratif rigoureux et gestion des correspondances officielles</li>
+                            <li>Appui jusqu'à l'obtention de vos documents (visa, permis, résidence) et votre installation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Zone d'Intervention</h4>
+                        <p>Nous intervenons dans les <strong>27 pays de l'Union européenne</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bannière Conditions et Avantages -->
+<div class="container mt-5">
+    <div class="ad-banner">
+        <img src="https://www.planetegrandesecoles.com/wp-content/uploads/2024/11/4.png.webp" alt="Conditions et Avantages" class="img-fluid">
+        <h4>Conditions et Avantages</h4>
+        <p>Aucun frais d'inscription ni de dossier ne sera exigé.</p>
+    </div>
+</div>
+
+<!-- Section Avantages et Conditions -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="procedure-section">
+                    <h3>Nos Avantages</h3>
+                    <div class="procedure-step">
+                        <h4>Accompagnement Personnalisé</h4>
+                        <p>Un suivi individuel adapté à votre profil et vos besoins spécifiques.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Prise en Charge Complète</h4>
+                        <p>Gestion de toutes les démarches administratives pour vous.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Ressources Exclusives</h4>
+                        <p>Accès à des ressources exclusives (emploi, logement, documents officiels).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="procedure-section">
+                    <h3>Nos Conditions</h3>
+                    <div class="procedure-step">
+                        <h4>Suivi Régulier</h4>
+                        <p>Suivi régulier avec notre équipe tout au long du processus.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Contribution Mensuelle</h4>
+                        <p>Contribution de 20 % du salaire mensuel pendant 12 mois.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Engagement Professionnel</h4>
+                        <p>Nous nous engageons à vous offrir un accompagnement sérieux, professionnel et adapté à votre profil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Procédure Express -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="procedure-section">
+            <h2 class="text-center mb-5">La Procédure d'ENTRÉE EXPRESS</h2>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="procedure-step">
+                        <h4>Passeport Temporaire Canadien</h4>
+                        <p>La procédure d'ENTRÉE EXPRESS nécessite un Passeport temporaire canadien au cas où le candidat n'est pas sur place avec son passeport régional.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Informations Essentielles</h4>
+                        <p>Le passeport temporaire canadien est un document délivré en cas de besoin urgent, lorsqu'un passeport régulier n'est pas disponible. Il est requis dans le cadre de votre procédure d'immigration pour intégrer votre visa de travailleur, comme l'exige l'ambassade à Toronto.</p>
+                    </div>
+                    
+                    <div class="procedure-step">
+                        <h4>Étapes à Suivre</h4>
+                        <p>Vous recevrez une formulaires à imprimer, remplir, signer, avec votre photo d'identité et vos empreintes digitales :</p>
+                        <ul>
+                            <li><strong>Demande de passeport temporaire</strong></li>
+                            <li><strong>Dossier à fournir :</strong> Photo d'identité bien cadrée et photo claire de votre passeport</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Documents Officiels -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="procedure-section">
+            <h2 class="text-center mb-5">Documents Officiels Inclus</h2>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-id-card fa-3x text-primary mb-3"></i>
+                            <h5>Permis de Travail</h5>
+                            <p>Document officiel autorisant l'exercice d'une activité professionnelle au Canada.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-passport fa-3x text-primary mb-3"></i>
+                            <h5>Visa d'Entrée</h5>
+                            <p>Autorisation officielle d'entrée sur le territoire canadien.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-home fa-3x text-primary mb-3"></i>
+                            <h5>Résidence Permanente</h5>
+                            <p>Statut de résident permanent du Canada avec tous les droits associés.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-certificate fa-3x text-primary mb-3"></i>
+                            <h5>Certificat de Citoyenneté</h5>
+                            <p>Document officiel attestant de votre citoyenneté canadienne.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-plane fa-3x text-primary mb-3"></i>
+                            <h5>Billet d'Avion</h5>
+                            <p>Prise en charge complète de votre transport vers le Canada.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                            <h5>Hébergement</h5>
+                            <p>Mise à disposition d'un logement dès votre arrivée au Canada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--ircc-blue-dark) 0%, var(--ircc-blue-matte) 100%); color: white;">
+    <div class="container text-center px-4">
+        <h2 class="mb-4">Prêt à Commencer Votre Aventure Canadienne ?</h2>
+        <p class="lead mb-4">Rejoignez des milliers de personnes qui ont réussi leur immigration au Canada grâce à notre accompagnement professionnel.</p>
+        <div class="d-flex flex-row flex-wrap justify-content-center gap-2">
+            <a href="{% url 'application_form' %}" class="btn btn-light btn-lg">Commencer ma candidature</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">Nous contacter</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

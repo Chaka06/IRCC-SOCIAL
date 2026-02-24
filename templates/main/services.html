@@ -1,0 +1,290 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Nos Services - IMIGATUS{% endblock %}
+{% block meta_description %}Services d'immigration Canada : visa travail, résidence permanente, vérification passeport et visa, support WhatsApp. IMIGATUS vous accompagne.{% endblock %}
+{% block og_title %}Nos Services - IMIGATUS | Immigration Canada{% endblock %}
+{% block og_description %}Visa travail, résidence permanente, vérification documents. Support WhatsApp et accompagnement personnalisé.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="display-4 fw-bold mb-4">
+                    Nos Services
+                </h1>
+                <p class="lead mb-4">
+                    Des solutions complètes et professionnelles pour votre immigration au Canada. 
+                    Découvrez tous nos services spécialisés.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-cogs" style="font-size: 12rem; color: rgba(255,255,255,0.3);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bannières Publicitaires Produits -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Documents Officiels Disponibles</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="product-ad">
+                    <img src="https://www.canada.ca/content/dam/ircc/images/services/canadian-passports/passport-data-page-large.jpg" alt="Passeport Canadien">
+                    <h4>Passeport Canadien</h4>
+                    <p>Passeport temporaire ou permanent canadien délivré en 72 heures maximum.</p>
+                    <a href="{% url 'application_form' %}" class="btn">Obtenir</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="product-ad">
+                    <img src="https://www.demarches.tn/wp-content/uploads/sites/23/2024/12/visa-canada-1024x683.jpg?_t=1734620034" alt="Visa de Travail">
+                    <h4>Visa de Travail</h4>
+                    <p>Visa de travail intégré directement dans votre passeport temporaire.</p>
+                    <a href="{% url 'application_form' %}" class="btn">Obtenir</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="product-ad">
+                    <img src="https://www.canada.ca/content/dam/ircc/images/services/new-immigrants/pr_card_2021.jpg" alt="Carte de Résidence">
+                    <h4>Carte de Résidence</h4>
+                    <p>Statut de résident permanent avec tous les droits canadiens.</p>
+                    <a href="{% url 'application_form' %}" class="btn">Obtenir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-file-alt fa-4x text-danger mb-4"></i>
+                        <h4 class="card-title">Candidature d'Immigration</h4>
+                        <p class="card-text">
+                            Formulaire complet et professionnel pour votre demande d'immigration. 
+                            Génération automatique de documents PDF officiels.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Formulaire en ligne sécurisé</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Génération PDF automatique</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Validation des données</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Support WhatsApp inclus</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="btn btn-primary mt-3">Commencer</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-search fa-4x text-danger mb-4"></i>
+                        <h4 class="card-title">Vérification de Passeport</h4>
+                        <p class="card-text">
+                            Vérifiez instantanément les informations de votre passeport 
+                            dans notre base de données sécurisée et officielle.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Recherche instantanée</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Base de données sécurisée</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Informations complètes</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Validation officielle</li>
+                        </ul>
+                        <a href="{% url 'passport_checker' %}" class="btn btn-primary mt-3">Vérifier Passeport</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-stamp fa-4x text-danger mb-4"></i>
+                        <h4 class="card-title">Vérification de Visa</h4>
+                        <p class="card-text">
+                            Vérifiez instantanément les informations de votre visa 
+                            dans notre base de données sécurisée et officielle.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Recherche instantanée</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Base de données sécurisée</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Type et statut du visa</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Dates de validité</li>
+                        </ul>
+                        <a href="{% url 'visa_checker' %}" class="btn btn-primary mt-3">Vérifier Visa</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fab fa-whatsapp fa-4x text-success mb-4"></i>
+                        <h4 class="card-title">Support WhatsApp</h4>
+                        <p class="card-text">
+                            Assistance directe et personnalisée via WhatsApp pour toutes vos questions 
+                            et le suivi de votre dossier d'immigration.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Support 24/7</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Réponse rapide</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Suivi personnalisé</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Conseils d'experts</li>
+                        </ul>
+                        <a href="{% url 'contact' %}" class="btn btn-success mt-3">Contacter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-file-pdf fa-4x text-danger mb-4"></i>
+                        <h4 class="card-title">Génération de Documents</h4>
+                        <p class="card-text">
+                            Création automatique de documents professionnels au format PDF 
+                            pour votre dossier d'immigration.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Format professionnel</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Génération automatique</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Téléchargement instantané</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Logo entreprise inclus</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="btn btn-primary mt-3">Créer Document</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-user-tie fa-4x text-danger mb-4"></i>
+                        <h4 class="card-title">Consultation Personnalisée</h4>
+                        <p class="card-text">
+                            Consultation individuelle avec nos experts pour évaluer 
+                            votre éligibilité et optimiser votre candidature.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Évaluation gratuite</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Conseils personnalisés</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Stratégie optimisée</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Suivi dédié</li>
+                        </ul>
+                        <a href="{% url 'contact' %}" class="btn btn-primary mt-3">Réserver</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg border-0">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-chart-line fa-4x text-danger mb-4"></i>
+                        <h4 class="card-title">Suivi de Dossier</h4>
+                        <p class="card-text">
+                            Suivi complet de votre dossier d'immigration avec mises à jour 
+                            régulières et notifications automatiques.
+                        </p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Mises à jour régulières</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Notifications automatiques</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Statut en temps réel</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Historique complet</li>
+                        </ul>
+                        <a href="{% url 'contact' %}" class="btn btn-primary mt-3">En Savoir Plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold text-dark mb-3">Notre Processus</h2>
+                <p class="lead text-muted">Simple, rapide et professionnel</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">1</span>
+                    </div>
+                    <h5>Remplir le Formulaire</h5>
+                    <p class="text-muted">Complétez notre formulaire en ligne avec vos informations personnelles</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">2</span>
+                    </div>
+                    <h5>Génération PDF</h5>
+                    <p class="text-muted">Téléchargez automatiquement votre document de candidature professionnel</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">3</span>
+                    </div>
+                    <h5>Contact WhatsApp</h5>
+                    <p class="text-muted">Contactez notre équipe via WhatsApp pour la suite du processus</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">4</span>
+                    </div>
+                    <h5>Accompagnement</h5>
+                    <p class="text-muted">Suivi personnalisé jusqu'à l'obtention de votre visa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="display-6 fw-bold text-dark mb-3">Prêt à Commencer ?</h2>
+                        <p class="lead text-muted mb-4">
+                            Choisissez le service qui correspond à vos besoins et commencez votre aventure canadienne dès aujourd'hui.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <a href="{% url 'application_form' %}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-rocket me-2"></i>Commencer ma Candidature
+                            </a>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-phone me-2"></i>Nous Contacter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

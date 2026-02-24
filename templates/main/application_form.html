@@ -1,0 +1,481 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Formulaire de Candidature - IMIGATUS{% endblock %}
+{% block meta_description %}Formulaire de candidature d'immigration au Canada. Déposez votre dossier en ligne : visa, permis de travail, résidence permanente.{% endblock %}
+{% block og_title %}Formulaire de Candidature - IMIGATUS | Immigration Canada{% endblock %}
+{% block og_description %}Candidature en ligne pour l'immigration au Canada. Formulaire sécurisé et accompagnement personnalisé.{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Cohérence des couleurs avec le header */
+  .application-form-section .card-header.bg-primary {
+    background: linear-gradient(135deg, var(--ircc-blue-dark) 0%, var(--ircc-blue-matte) 100%) !important;
+    border: none;
+  }
+  .application-form-section .text-primary {
+    color: var(--ircc-blue-dark) !important;
+  }
+  .application-form-section .border-primary {
+    border-color: var(--ircc-blue-matte) !important;
+  }
+  .application-form-section .form-control:focus {
+    border-color: var(--ircc-blue-matte);
+    box-shadow: 0 0 0 0.2rem rgba(27, 54, 93, 0.25);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="display-4 fw-bold mb-4">
+                    Candidature d'Immigration
+                </h1>
+                <p class="lead mb-4">
+                    Remplissez ce formulaire pour commencer votre processus d'immigration au Canada. 
+                    Toutes les informations sont sécurisées et confidentielles.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-file-alt" style="font-size: 12rem; color: rgba(255,255,255,0.3);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Form Section -->
+<section class="py-5 application-form-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="fas fa-user-edit me-2"></i>Formulaire de Candidature d'Immigration
+                        </h3>
+                        <p class="mb-0 mt-2">Veuillez remplir tous les champs obligatoires (*)</p>
+                    </div>
+                    <div class="card-body p-5">
+                        <form method="post" id="applicationForm" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <!-- Informations Personnelles -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h4 class="text-primary border-bottom pb-2 mb-4">
+                                        <i class="fas fa-user me-2"></i>Informations Personnelles
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="{{ form.first_name.id_for_label }}" class="form-label">
+                                        {{ form.first_name.label }}
+                                    </label>
+                                    {{ form.first_name }}
+                                    {% if form.first_name.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.first_name.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.last_name.id_for_label }}" class="form-label">
+                                        {{ form.last_name.label }}
+                                    </label>
+                                    {{ form.last_name }}
+                                    {% if form.last_name.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.last_name.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="{{ form.birth_date.id_for_label }}" class="form-label">
+                                        {{ form.birth_date.label }}
+                                    </label>
+                                    {{ form.birth_date }}
+                                    {% if form.birth_date.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.birth_date.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.birth_place.id_for_label }}" class="form-label">
+                                        {{ form.birth_place.label }}
+                                    </label>
+                                    {{ form.birth_place }}
+                                    {% if form.birth_place.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.birth_place.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-3">
+                                    <label for="{{ form.height.id_for_label }}" class="form-label">
+                                        {{ form.height.label }}
+                                    </label>
+                                    {{ form.height }}
+                                    {% if form.height.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.height.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="{{ form.weight.id_for_label }}" class="form-label">
+                                        {{ form.weight.label }}
+                                    </label>
+                                    {{ form.weight }}
+                                    {% if form.weight.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.weight.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="{{ form.marital_status.id_for_label }}" class="form-label">
+                                        {{ form.marital_status.label }}
+                                    </label>
+                                    {{ form.marital_status }}
+                                    {% if form.marital_status.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.marital_status.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="{{ form.profession.id_for_label }}" class="form-label">
+                                        {{ form.profession.label }}
+                                    </label>
+                                    {{ form.profession }}
+                                    {% if form.profession.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.profession.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Pièce d'identité -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h4 class="text-primary border-bottom pb-2 mb-4">
+                                        <i class="fas fa-id-card me-2"></i>Pièce d'identité
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="{{ form.id_document_recto.id_for_label }}" class="form-label">
+                                        {{ form.id_document_recto.label }}
+                                    </label>
+                                    {{ form.id_document_recto }}
+                                    <small class="text-muted">Format: JPG, PNG. Taille max recommandée: 5 Mo</small>
+                                    {% if form.id_document_recto.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.id_document_recto.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.id_document_verso.id_for_label }}" class="form-label">
+                                        {{ form.id_document_verso.label }}
+                                    </label>
+                                    {{ form.id_document_verso }}
+                                    <small class="text-muted">Format: JPG, PNG. Taille max recommandée: 5 Mo</small>
+                                    {% if form.id_document_verso.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.id_document_verso.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Informations de Contact -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h4 class="text-primary border-bottom pb-2 mb-4">
+                                        <i class="fas fa-address-book me-2"></i>Informations de Contact
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-12">
+                                    <label for="{{ form.address.id_for_label }}" class="form-label">
+                                        {{ form.address.label }}
+                                    </label>
+                                    {{ form.address }}
+                                    {% if form.address.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.address.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="{{ form.country_of_residence.id_for_label }}" class="form-label">
+                                        {{ form.country_of_residence.label }}
+                                    </label>
+                                    {{ form.country_of_residence }}
+                                    {% if form.country_of_residence.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.country_of_residence.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label">
+                                        {{ form.phone.label }}
+                                    </label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.phone.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Informations Familiales -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h4 class="text-primary border-bottom pb-2 mb-4">
+                                        <i class="fas fa-users me-2"></i>Informations Familiales
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="{{ form.father_name.id_for_label }}" class="form-label">
+                                        {{ form.father_name.label }}
+                                    </label>
+                                    {{ form.father_name }}
+                                    {% if form.father_name.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.father_name.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.mother_name.id_for_label }}" class="form-label">
+                                        {{ form.mother_name.label }}
+                                    </label>
+                                    {{ form.mother_name }}
+                                    {% if form.mother_name.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.mother_name.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Consentement et Soumission -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="alert alert-info">
+                                        <h6><i class="fas fa-info-circle me-2"></i>Important :</h6>
+                                        <ul class="mb-0">
+                                            <li>Toutes les informations fournies sont confidentielles et sécurisées</li>
+                                            <li>Un document PDF professionnel sera généré automatiquement après soumission</li>
+                                            <li>Vous pourrez télécharger le document et contacter notre équipe via WhatsApp</li>
+                                            <li>Veuillez vous assurer que toutes les informations sont exactes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>Soumettre ma Candidature
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Information Section -->
+<section class="py-5 bg-light">
+    <div class="container px-4">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold text-dark mb-3">Après Soumission</h2>
+                <p class="lead text-muted">Voici ce qui se passe après avoir soumis votre candidature</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <div class="info-card">
+                    <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
+                    <h5>Génération PDF</h5>
+                    <p class="text-muted">Un document professionnel sera créé automatiquement avec vos informations</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 text-center">
+                <div class="info-card">
+                    <i class="fas fa-download fa-3x text-danger mb-3"></i>
+                    <h5>Téléchargement</h5>
+                    <p class="text-muted">Téléchargez votre document de candidature au format PDF</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 text-center">
+                <div class="info-card">
+                    <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+                    <h5>Contact WhatsApp</h5>
+                    <p class="text-muted">Contactez notre équipe directement via WhatsApp pour la suite</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Validation en temps réel
+    document.getElementById('applicationForm').addEventListener('submit', function(e) {
+        const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('is-invalid');
+            } else {
+                field.classList.remove('is-invalid');
+            }
+        });
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('Veuillez remplir tous les champs obligatoires.');
+            return;
+        }
+        
+        // Validation spécifique pour le téléphone
+        const phoneField = document.getElementById('{{ form.phone.id_for_label }}');
+        const phoneValue = phoneField.value.trim();
+        const phoneRegex = /^\+?[1-9]\d{1,14}$/;
+        
+        if (phoneValue && !phoneRegex.test(phoneValue.replace(/\s/g, ''))) {
+            e.preventDefault();
+            alert('Veuillez entrer un numéro de téléphone valide.');
+            phoneField.classList.add('is-invalid');
+            return;
+        }
+        
+        // Validation pour la taille et le poids
+        const heightField = document.getElementById('{{ form.height.id_for_label }}');
+        const weightField = document.getElementById('{{ form.weight.id_for_label }}');
+        
+        const height = parseInt(heightField.value);
+        const weight = parseInt(weightField.value);
+        
+        if (height && (height < 100 || height > 250)) {
+            e.preventDefault();
+            alert('La taille doit être entre 100 et 250 cm.');
+            heightField.classList.add('is-invalid');
+            return;
+        }
+        
+        if (weight && (weight < 30 || weight > 200)) {
+            e.preventDefault();
+            alert('Le poids doit être entre 30 et 200 kg.');
+            weightField.classList.add('is-invalid');
+            return;
+        }
+        
+        // Confirmation avant soumission
+        if (!confirm('Êtes-vous sûr de vouloir soumettre votre candidature ? Vérifiez que toutes les informations sont correctes.')) {
+            e.preventDefault();
+            return;
+        }
+    });
+    
+    // Nettoyage automatique du téléphone
+    document.getElementById('{{ form.phone.id_for_label }}').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value && !value.startsWith('+')) {
+            value = '+' + value;
+        }
+        e.target.value = value;
+    });
+    
+    // Validation en temps réel pour les champs numériques
+    document.getElementById('{{ form.height.id_for_label }}').addEventListener('input', function(e) {
+        const value = parseInt(e.target.value);
+        if (value && (value < 100 || value > 250)) {
+            e.target.classList.add('is-invalid');
+        } else {
+            e.target.classList.remove('is-invalid');
+        }
+    });
+    
+    document.getElementById('{{ form.weight.id_for_label }}').addEventListener('input', function(e) {
+        const value = parseInt(e.target.value);
+        if (value && (value < 30 || value > 200)) {
+            e.target.classList.add('is-invalid');
+        } else {
+            e.target.classList.remove('is-invalid');
+        }
+    });
+</script>
+{% endblock %}
+

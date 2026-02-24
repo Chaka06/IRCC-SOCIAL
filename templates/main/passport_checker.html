@@ -1,0 +1,257 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Vérification de Passeport - IMIGATUS{% endblock %}
+{% block meta_description %}Vérifiez votre passeport canadien en ligne. Vérification rapide et sécurisée des informations de passeport dans notre base officielle.{% endblock %}
+{% block og_title %}Vérification de Passeport - IMIGATUS{% endblock %}
+{% block og_description %}Vérification sécurisée des informations de passeport. Résultats instantanés.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="display-4 fw-bold mb-4">
+                    Vérification de Passeport
+                </h1>
+                <p class="lead mb-4">
+                    Vérifiez instantanément les informations de votre passeport 
+                    dans notre base de données sécurisée et officielle.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-passport" style="font-size: 12rem; color: rgba(255,255,255,0.3);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Verification Form Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-search fa-3x text-danger mb-3"></i>
+                            <h2 class="fw-bold">Vérifier un Passeport</h2>
+                            <p class="text-muted">Entrez le numéro de passeport pour consulter les informations</p>
+                        </div>
+                        
+                        <form method="post" id="passportForm">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <label for="passport_number" class="form-label fw-bold">
+                                    <i class="fas fa-passport me-2"></i>Numéro de Passeport
+                                </label>
+                                <input type="text" 
+                                       class="form-control form-control-lg" 
+                                       id="passport_number" 
+                                       name="passport_number" 
+                                       placeholder="Ex: NB442748"
+                                       required
+                                       style="text-transform: uppercase;">
+                                <div class="form-text">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Format : 2 lettres suivies de 6 chiffres (ex: NB442748)
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-search me-2"></i>Vérifier le Passeport
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Section -->
+{% if passport_number %}
+<section class="py-5 {% if found %}bg-light{% endif %}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                {% if found %}
+                    <!-- Passport Found -->
+                    <div class="card border-success shadow-lg">
+                        <div class="card-header bg-success text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-check-circle me-2"></i>Passeport Trouvé
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Numéro de Passeport</h6>
+                                    <p class="fw-bold fs-5">{{ passport_info.passport_number }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Nationalité</h6>
+                                    <p class="fw-bold fs-5">{{ passport_info.nationality }}</p>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Nom Complet</h6>
+                                    <p class="fw-bold fs-5">{{ passport_info.first_name }} {{ passport_info.last_name }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Sexe</h6>
+                                    <p class="fw-bold fs-5">{{ passport_info.get_gender_display }}</p>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Date de Naissance</h6>
+                                    <p class="fw-bold fs-5">{{ passport_info.birth_date|date:"d/m/Y" }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Lieu de Naissance</h6>
+                                    <p class="fw-bold fs-5">{{ passport_info.birth_place }}</p>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Date d'Enregistrement</h6>
+                                    <p class="fw-bold">{{ passport_info.created_at|date:"d/m/Y à H:i" }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-muted mb-2">Dernière Mise à Jour</h6>
+                                    <p class="fw-bold">{{ passport_info.updated_at|date:"d/m/Y à H:i" }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 text-center">
+                                <div class="alert alert-success">
+                                    <i class="fas fa-shield-alt me-2"></i>
+                                    <strong>Passeport Valide</strong> - Les informations sont confirmées dans notre base de données officielle.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Passport Not Found -->
+                    <div class="card border-danger shadow-lg">
+                        <div class="card-header bg-danger text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-exclamation-triangle me-2"></i>Passeport Non Trouvé
+                            </h4>
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                            <h5 class="text-danger mb-3">Aucun passeport trouvé</h5>
+                            <p class="text-muted mb-4">
+                                Le numéro de passeport <strong>"{{ passport_number }}"</strong> n'a pas été trouvé dans notre base de données.
+                            </p>
+                            
+                            {% if error %}
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-info-circle me-2"></i>{{ error }}
+                                </div>
+                            {% endif %}
+                            
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Suggestions :</h6>
+                                <ul class="list-unstyled mb-0">
+                                    <li>• Vérifiez l'orthographe du numéro de passeport</li>
+                                    <li>• Format attendu : 2 lettres + 6 chiffres (ex: NB442748)</li>
+                                    <li>• Le passeport doit être enregistré dans notre système</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="{% url 'passport_checker' %}" class="btn btn-primary">
+                                <i class="fas fa-redo me-2"></i>Nouvelle Recherche
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Information Section -->
+<section class="py-5 bg-light">
+    <div class="container px-4">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold text-dark mb-3">Pourquoi Vérifier Votre Passeport ?</h2>
+                <p class="lead text-muted">Une vérification rapide et sécurisée de vos informations</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <div class="info-card">
+                    <i class="fas fa-shield-alt fa-3x text-danger mb-3"></i>
+                    <h5>Sécurisé</h5>
+                    <p class="text-muted">Base de données protégée et informations confidentielles</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 text-center">
+                <div class="info-card">
+                    <i class="fas fa-clock fa-3x text-danger mb-3"></i>
+                    <h5>Instantané</h5>
+                    <p class="text-muted">Résultats immédiats en quelques secondes</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 text-center">
+                <div class="info-card">
+                    <i class="fas fa-check-circle fa-3x text-danger mb-3"></i>
+                    <h5>Fiable</h5>
+                    <p class="text-muted">Informations officielles et à jour</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Convertir automatiquement en majuscules
+    document.getElementById('passport_number').addEventListener('input', function(e) {
+        e.target.value = e.target.value.toUpperCase();
+    });
+    
+    // Validation du formulaire
+    document.getElementById('passportForm').addEventListener('submit', function(e) {
+        const passportNumber = document.getElementById('passport_number').value.trim();
+        
+        if (!passportNumber) {
+            e.preventDefault();
+            alert('Veuillez entrer un numéro de passeport.');
+            return;
+        }
+        
+        // Validation du format : 2 lettres + 6 chiffres (ex: NB442748)
+        const passportRegex = /^[A-Z]{2}[0-9]{6}$/;
+        if (!passportRegex.test(passportNumber)) {
+            e.preventDefault();
+            alert('Format invalide. Le numéro de passeport doit être 2 lettres suivies de 6 chiffres (ex: NB442748).');
+            return;
+        }
+    });
+</script>
+{% endblock %}
+
