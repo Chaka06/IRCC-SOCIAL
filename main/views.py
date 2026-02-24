@@ -156,7 +156,7 @@ def contact(request):
     """Page Contact"""
     company_info = CompanyInfo.objects.first()
     # Valeurs par défaut si aucune fiche entreprise en base
-    contact_email = company_info.email if company_info else 'irccvoyage@gmail.com'
+    contact_email = company_info.email if company_info else 'no-replay@ircc-social.com'
     contact_whatsapp = company_info.whatsapp_number if company_info else '+14373750615'
     contact_whatsapp_clean = contact_whatsapp.replace('+', '').replace(' ', '')
     context = {

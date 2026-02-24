@@ -10,7 +10,7 @@ def create_default_company(apps, schema_editor):
             company_name='IRCC / IMIGATUS',
             address='5343 Dundas St W, Toronto, ON M9B 6K5, Canada',
             phone='+14373750615',
-            email='irccvoyage@gmail.com',
+            email='no-replay@ircc-social.com',
             whatsapp_number='+14373750615',
             website='',
         )
