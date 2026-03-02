@@ -29,65 +29,16 @@
     justify-content: center;
   }
   #adBox {
-    position: relative;
     width: 95%;
     max-width: 720px;
   }
-  #adTopBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #c8102e;
-    padding: 6px 12px;
-    border-radius: 8px 8px 0 0;
-  }
-  #adLabel {
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  #adClose {
-    background: none;
-    border: 2px solid #fff;
-    color: #fff;
-    border-radius: 4px;
-    padding: 2px 10px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background 0.2s;
-  }
-  #adClose:hover { background: rgba(255,255,255,0.2); }
   #adVideo {
     width: 100%;
     display: block;
     background: #000;
-    max-height: 75vh;
-    object-fit: contain;
+    max-height: 80vh;
+    border-radius: 8px;
   }
-  #adBottomBar {
-    background: #111;
-    padding: 6px 12px;
-    border-radius: 0 0 8px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  #adMuteBtn {
-    background: none;
-    border: 1px solid #555;
-    color: #ccc;
-    border-radius: 4px;
-    padding: 3px 10px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  #adMuteBtn:hover { border-color: #fff; color: #fff; }
-
-  /* Écran de décompte entre les deux vidéos */
   #adCountdown {
     display: none;
     flex-direction: column;
@@ -95,7 +46,7 @@
     justify-content: center;
     background: #000;
     min-height: 200px;
-    padding: 40px;
+    border-radius: 8px;
   }
   #adCountdown p {
     color: #fff;
@@ -106,7 +57,6 @@
     color: #c8102e;
     font-size: 3rem;
     font-weight: 700;
-    line-height: 1;
   }
 </style>
 {% endblock %}
@@ -352,17 +302,10 @@
 <!-- ── Overlay Publicitaire Vidéo ── -->
 <div id="adOverlay">
   <div id="adBox">
-    <div id="adTopBar">
-      <span id="adLabel">Publicité</span>
-      <button id="adClose">✕ Passer</button>
-    </div>
-    <video id="adVideo" muted playsinline></video>
+    <video id="adVideo" muted playsinline controls></video>
     <div id="adCountdown">
       <p>Prochaine vidéo dans</p>
       <div id="adCountNum">1</div>
-    </div>
-    <div id="adBottomBar">
-      <button id="adMuteBtn">🔇 Activer le son</button>
     </div>
   </div>
 </div>
@@ -406,15 +349,12 @@
   var VIDEO1 = "{% static 'videos/video1.mp4' %}";
   var VIDEO2 = "{% static 'videos/video2.mp4' %}";
 
-  var state    = 'idle'; // idle | playing_v1 | countdown | playing_v2 | closed
+  var state    = 'idle';
   var overlay  = document.getElementById('adOverlay');
   var video    = document.getElementById('adVideo');
   var countdown= document.getElementById('adCountdown');
   var countNum = document.getElementById('adCountNum');
-  var closeBtn = document.getElementById('adClose');
-  var muteBtn  = document.getElementById('adMuteBtn');
 
-  /* ── Lancer l'overlay après 4 secondes ── */
   setTimeout(showAd, 4000);
 
   function showAd() {
@@ -427,7 +367,6 @@
     video.play().catch(function () {});
   }
 
-  /* ── Passer au décompte 1s puis lancer la vidéo 2 ── */
   function goToCountdown() {
     if (state !== 'playing_v1') return;
     state = 'countdown';
@@ -462,25 +401,9 @@
     overlay.style.display = 'none';
   }
 
-  /* ── Fin naturelle de la vidéo ── */
   video.addEventListener('ended', function () {
     if (state === 'playing_v1') goToCountdown();
     else if (state === 'playing_v2') closeOverlay();
-  });
-
-  /* ── Bouton fermer / passer ── */
-  closeBtn.addEventListener('click', function () {
-    if (state === 'playing_v1') {
-      goToCountdown(); // v1 fermée → décompte 1s → v2 automatique
-    } else {
-      closeOverlay();  // pendant décompte ou v2 → fermer tout
-    }
-  });
-
-  /* ── Bouton son ── */
-  muteBtn.addEventListener('click', function () {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? '🔇 Activer le son' : '🔊 Couper le son';
   });
 })();
 </script>
