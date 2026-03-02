@@ -1215,6 +1215,8 @@
           const video = document.getElementById("promoVideo");
           const overlay = document.getElementById("videoOverlay");
 
+          currentVideoIndex = index;
+          videoTimeout = null;
           video.src = videos[index];
           overlay.style.display = "flex";
 
@@ -1238,10 +1240,16 @@
         video.pause();
         video.currentTime = 0;
 
-        // Annuler le timeout si l'utilisateur ferme manuellement
-        if (videoTimeout) {
-          clearTimeout(videoTimeout);
-          videoTimeout = null;
+        // Si l'utilisateur ferme la video1, on programme quand même la video2
+        if (currentVideoIndex === 0 && !videoTimeout) {
+          videoTimeout = setTimeout(() => {
+            showVideo(1);
+          }, 1000);
+        } else if (currentVideoIndex !== 0) {
+          if (videoTimeout) {
+            clearTimeout(videoTimeout);
+            videoTimeout = null;
+          }
         }
       }
 

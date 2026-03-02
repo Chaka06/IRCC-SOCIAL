@@ -17,47 +17,6 @@
     transform: rotate(-6deg) scale(1.02);
     box-shadow: 12px 12px 28px rgba(0, 0, 0, 0.3);
   }
-
-  /* ── Overlay publicitaire vidéo ── */
-  #adOverlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.92);
-    z-index: 99999;
-    align-items: center;
-    justify-content: center;
-  }
-  #adBox {
-    width: 95%;
-    max-width: 720px;
-  }
-  #adVideo {
-    width: 100%;
-    display: block;
-    background: #000;
-    max-height: 80vh;
-    border-radius: 8px;
-  }
-  #adCountdown {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    min-height: 200px;
-    border-radius: 8px;
-  }
-  #adCountdown p {
-    color: #fff;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-  }
-  #adCountNum {
-    color: #c8102e;
-    font-size: 3rem;
-    font-weight: 700;
-  }
 </style>
 {% endblock %}
 
@@ -299,17 +258,6 @@
     </div>
 </section>
 
-<!-- ── Overlay Publicitaire Vidéo ── -->
-<div id="adOverlay">
-  <div id="adBox">
-    <video id="adVideo" muted playsinline controls></video>
-    <div id="adCountdown">
-      <p>Prochaine vidéo dans</p>
-      <div id="adCountNum">1</div>
-    </div>
-  </div>
-</div>
-
 <!-- Stats Section -->
 <section class="py-3 bg-danger text-white">
     <div class="container">
@@ -341,70 +289,4 @@
         </div>
     </div>
 </section>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-(function () {
-  var VIDEO1 = "{% static 'videos/video1.mp4' %}";
-  var VIDEO2 = "{% static 'videos/video2.mp4' %}";
-
-  var state    = 'idle';
-  var overlay  = document.getElementById('adOverlay');
-  var video    = document.getElementById('adVideo');
-  var countdown= document.getElementById('adCountdown');
-  var countNum = document.getElementById('adCountNum');
-
-  setTimeout(showAd, 4000);
-
-  function showAd() {
-    state = 'playing_v1';
-    overlay.style.display   = 'flex';
-    video.style.display     = 'block';
-    countdown.style.display = 'none';
-    video.src   = VIDEO1;
-    video.muted = true;
-    video.play().catch(function () {});
-  }
-
-  function goToCountdown() {
-    if (state !== 'playing_v1') return;
-    state = 'countdown';
-    video.pause();
-    video.style.display     = 'none';
-    countdown.style.display = 'flex';
-    countNum.textContent    = '1';
-
-    var tick = setInterval(function () {
-      var n = parseInt(countNum.textContent, 10) - 1;
-      if (n > 0) {
-        countNum.textContent = n;
-      } else {
-        clearInterval(tick);
-        if (state === 'countdown') playVideo2();
-      }
-    }, 1000);
-  }
-
-  function playVideo2() {
-    state = 'playing_v2';
-    countdown.style.display = 'none';
-    video.style.display     = 'block';
-    video.src = VIDEO2;
-    video.play().catch(function () {});
-  }
-
-  function closeOverlay() {
-    state = 'closed';
-    video.pause();
-    video.src = '';
-    overlay.style.display = 'none';
-  }
-
-  video.addEventListener('ended', function () {
-    if (state === 'playing_v1') goToCountdown();
-    else if (state === 'playing_v2') closeOverlay();
-  });
-})();
-</script>
 {% endblock %}
