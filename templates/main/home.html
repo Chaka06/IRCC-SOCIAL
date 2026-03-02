@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %}IRCC - Immigration, Réfugiés et Citoyenneté Canada{% endblock %}
 {% block meta_description %}IRCC SOCIAL : accompagnement à l'immigration au Canada. Visa, permis de travail, résidence permanente. Formulaire en ligne, vérification passeport et visa, support WhatsApp.{% endblock %}
@@ -184,7 +185,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-3">
                 <div class="product-ad">
-                    <img src="https://www.canada.ca/content/dam/ircc/images/services/canadian-passports/passport-data-page-large.jpg" alt="Passeport Canadien">
+                    <img src="{% static 'images/Passeport Canadien.jpg' %}" alt="Passeport Canadien">
                     <h4>Passeport Canadien</h4>
                     <p>Obtention de votre passeport canadien temporaire ou permanent avec notre accompagnement professionnel.</p>
                     <a href="{% url 'application_form' %}" class="btn">Demander</a>
@@ -192,7 +193,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-3">
                 <div class="product-ad">
-                    <img src="https://www.demarches.tn/wp-content/uploads/sites/23/2024/12/visa-canada-1024x683.jpg?_t=1734620034" alt="Visa de Travail">
+                    <img src="{% static 'images/Visa de Travail.jpg' %}" alt="Visa de Travail">
                     <h4>Visa de Travail</h4>
                     <p>Visa de travail canadien pour exercer votre profession au Canada dans les meilleures conditions.</p>
                     <a href="{% url 'application_form' %}" class="btn">Demander</a>
@@ -200,7 +201,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-3">
                 <div class="product-ad">
-                    <img src="https://www.canada.ca/content/dam/ircc/images/services/new-immigrants/pr_card_2021.jpg" alt="Carte de Résidence">
+                    <img src="{% static 'images/Carte de Résidence.jpg' %}" alt="Carte de Résidence">
                     <h4>Carte de Résidence</h4>
                     <p>Statut de résident permanent au Canada avec tous les droits et privilèges associés.</p>
                     <a href="{% url 'application_form' %}" class="btn">Demander</a>
