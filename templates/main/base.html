@@ -102,6 +102,12 @@
       href="https://drjob.ca/wp-content/uploads/2024/05/canada-leaf-600nw-589189172.jpg"
     />
 
+    <!-- Preconnect pour accélérer les connexions externes -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -112,15 +118,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <!-- Google Fonts -->
+    <!-- Google Fonts (non-bloquantes) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    </noscript>
 
     <style>
       :root {
@@ -1115,7 +1122,7 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
     <script>
       // Gestion du menu latéral mobile
@@ -1159,7 +1166,7 @@
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
         isSwipe = false;
-      });
+      }, { passive: true });
 
       document.addEventListener("touchmove", function (e) {
         if (!startX || !startY) return;
@@ -1171,7 +1178,7 @@
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
           isSwipe = true;
         }
-      });
+      }, { passive: true });
 
       document.addEventListener("touchend", function (e) {
         if (!isSwipe) return;
