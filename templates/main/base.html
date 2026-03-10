@@ -336,59 +336,6 @@
         object-fit: contain;
       }
 
-      .video-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .video-container {
-        position: relative;
-        max-width: 80%;
-        max-height: 80%;
-        margin: 0 auto;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      }
-
-      .video-container video {
-        width: 100%;
-        height: auto;
-        max-height: 70vh;
-        border-radius: 10px;
-        display: block;
-      }
-
-      .video-close {
-        position: absolute;
-        top: -40px;
-        right: 0;
-        background: var(--ircc-red);
-        color: var(--ircc-white);
-        border: 2px solid var(--ircc-white);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .video-close:hover {
-        background: #b71c1c;
-        transform: scale(1.1);
-        box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
-      }
-
       .alert {
         border-radius: 10px;
         border: none;
@@ -928,24 +875,6 @@
           height: 36px !important;
         }
 
-        .video-container {
-          max-width: 95%;
-          max-height: 85%;
-          padding: 15px;
-          margin: 10px auto;
-        }
-
-        .video-container video {
-          max-height: 60vh;
-        }
-
-        .video-close {
-          top: -30px;
-          right: 5px;
-          width: 35px;
-          height: 35px;
-          font-size: 18px;
-        }
       }
 
       /* Optimisations mobiles supplémentaires */
@@ -1185,88 +1114,10 @@
       </div>
     </footer>
 
-    <!-- Video Overlay -->
-    <div id="videoOverlay" class="video-overlay">
-      <div class="video-container">
-        <button class="video-close" onclick="closeVideo()">
-          <i class="fas fa-times"></i>
-        </button>
-        <video id="promoVideo" controls autoplay muted>
-          <source src="" type="video/mp4" />
-          Votre navigateur ne supporte pas la lecture vidéo.
-        </video>
-      </div>
-    </div>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // Gestion des vidéos publicitaires
-      let currentVideoIndex = 0;
-      let videoTimeout = null;
-      const videos = [
-        "/static/videos/video1.mp4", // Première vidéo
-        "/static/videos/video2.mp4", // Deuxième vidéo
-      ];
-
-      function showVideo(index) {
-        if (index < videos.length) {
-          const video = document.getElementById("promoVideo");
-          const overlay = document.getElementById("videoOverlay");
-
-          currentVideoIndex = index;
-          videoTimeout = null;
-          video.src = videos[index];
-          overlay.style.display = "flex";
-
-          video.onended = function () {
-            closeVideo();
-            if (index === 0) {
-              // Afficher la deuxième vidéo après 3 secondes
-              videoTimeout = setTimeout(() => {
-                showVideo(1);
-              }, 3000);
-            }
-          };
-        }
-      }
-
-      function closeVideo() {
-        const overlay = document.getElementById("videoOverlay");
-        const video = document.getElementById("promoVideo");
-
-        overlay.style.display = "none";
-        video.pause();
-        video.currentTime = 0;
-
-        // Si l'utilisateur ferme la video1, on programme quand même la video2
-        if (currentVideoIndex === 0 && !videoTimeout) {
-          videoTimeout = setTimeout(() => {
-            showVideo(1);
-          }, 1000);
-        } else if (currentVideoIndex !== 0) {
-          if (videoTimeout) {
-            clearTimeout(videoTimeout);
-            videoTimeout = null;
-          }
-        }
-      }
-
-      // Afficher la première vidéo 3 secondes après le chargement de la page
-      document.addEventListener("DOMContentLoaded", function () {
-        if (window.location.pathname === "/") {
-          setTimeout(() => showVideo(0), 3000);
-        }
-      });
-
-      // Fermer la vidéo avec la touche Échap
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeVideo();
-        }
-      });
-
       // Gestion du menu latéral mobile
       function toggleSidebar() {
         const sidebar = document.getElementById("mobileSidebar");
